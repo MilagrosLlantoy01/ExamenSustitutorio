@@ -1,0 +1,82 @@
+class NumeroComplejo:
+    def __init__(self, real, imaginario):
+        self.real = real
+        self.imaginario = imaginario
+
+    def suma(self, otro):
+        real = self.real + otro.real
+        imaginario = self.imaginario + otro.imaginario
+        return NumeroComplejo(real, imaginario)
+
+    def resta(self, otro):
+        real = self.real - otro.real
+        imaginario = self.imaginario - otro.imaginario
+        return NumeroComplejo(real, imaginario)
+
+    def multiplicacion(self, otro):
+        real = self.real * otro.real - self.imaginario * otro.imaginario
+        imaginario = self.real * otro.imaginario + self.imaginario * otro.real
+        return NumeroComplejo(real, imaginario)
+
+    def division(self, otro):
+        denominador = otro.real**2 + otro.imaginario**2
+        real = (self.real * otro.real + self.imaginario * otro.imaginario) / denominador
+        imaginario = (self.imaginario * otro.real - self.real * otro.imaginario) / denominador
+        return NumeroComplejo(real, imaginario)
+
+
+/*EJECUCION*/
+num1 = NumeroComplejo(2, 3)
+num2 = NumeroComplejo(4, 1)
+
+/*SUMA*/
+
+resultado_suma = num1.suma(num2)
+print(f"Suma: {resultado_suma.real} + {resultado_suma.imaginario}i")
+
+/*RESTA*/
+
+resultado_resta = num1.resta(num2)
+print(f"Resta: {resultado_resta.real} + {resultado_resta.imaginario}i")
+
+/*MULTIPLICACION*/
+
+resultado_multiplicacion = num1.multiplicacion(num2)
+print(f"Multiplicación: {resultado_multiplicacion.real} + {resultado_multiplicacion.imaginario}i")
+
+/*DIVISION*/
+
+resultado_division = num1.division(num2)
+print(f"División: {resultado_division.real} + {resultado_division.imaginario}i")
+
+
+
+/*TDD*/
+
+///prueba para la función de suma de números complejos
+
+import unittest
+
+class TestNumeroComplejo(unittest.TestCase):
+    def test_suma(self):
+        num1 = NumeroComplejo(2, 3)
+        num2 = NumeroComplejo(4, 1)
+        resultado_suma = num1.suma(num2)
+        self.assertEqual(resultado_suma.real, 6)
+        self.assertEqual(resultado_suma.imaginario, 4)
+
+if __name__ == '__main__':
+    unittest.main()
+
+/*Al ejecutar la prueba, debería fallar inicialmente porque la funcionalidad aún no ha sido
+implementada. Esto nos garantiza que 
+la prueba está correctamente diseñada y que esperamos un resultado específico.*/
+
+class NumeroComplejo:
+
+    def suma(self, otro):
+        real = self.real + otro.real
+        imaginario = self.imaginario + otro.imaginario
+        return NumeroComplejo(real, imaginario)
+
+
